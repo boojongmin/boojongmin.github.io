@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 기억 저장소</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on 기억 저장소</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Nov 2020 17:42:02 +0900</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>왜 Sqler는 JPA 쓸 때 다들 힘들어할까?</title>
+      <link>/post/spring/jpa/20201115/sqler2jpa/</link>
+      <pubDate>Sun, 15 Nov 2020 17:42:02 +0900</pubDate>
+      
+      <guid>/post/spring/jpa/20201115/sqler2jpa/</guid>
+      <description>들어가며 개구리 올챙이적 기억못한다고 나의 경우는 잘 모르겠지만, 주변 동료 개발자들이 mybatis, jdbctemplate등으로 sql을 사용하며 개발을 했던 경험자들은 JPA로 넘어오면서 백이면 백 힘들어하는 모습을 보았다. 대체 무엇이 그들을 힘들게 하는 것일까? 이전부터 정리하고 싶었던 글이기에 키보드 앞에 섰다.
+SQL에서 JPA로 전환시 무엇이 허들일까? 먼저 답만 생각해본다면 기존에 개발했던 경험들이다라고 생각해본다. 기존에 설계라고하면 db 스키마 설계를 떠올렸는데 JPA를 사용하면 설계는 객체 모델링이 된다. 사실 이 둘의 차이는 별거 아닌데 지도 같은거라 직진으로 금방 갈 수 있는데 결국에는 목적지에는 도달하지만 꾸불꾸불 긴 길을 오랜 시간을 들여 목적지에 돌아가는 것과 비슷한 느낌을 받는다.</description>
+    </item>
+    
+    <item>
+      <title>Jpa Join Fetch 관련 질문받은 것에 대한 정리</title>
+      <link>/post/spring/jpa/20201112/jpa-join-eager/</link>
+      <pubDate>Thu, 12 Nov 2020 21:21:50 +0900</pubDate>
+      
+      <guid>/post/spring/jpa/20201112/jpa-join-eager/</guid>
+      <description>들어가기 앞서. 글로 정리하기전에 작성한 코드는 https://github.com/boojongmin/boojongmin-samples/tree/master/java/sample-spring-jpa-join-fetch 이 링크에서 확인할 수 있습니다.
+문제상황 응답 api가 기대하는게
+[{id: 1,list: [{id: 1,isDel: false},{id: 3,isDel: false}]}]이런식으로 parent Entity가 child Entity의 isDel이 false 것만 조회를 해야하는데
+[{id: 1,list: [{id: 1,isDel: false},{id: 2,isDel: true},{id: 3,isDel: false}]}]실제로 조회를 해보니 isDel에 true인 것이 나옴.</description>
+    </item>
+    
+    <item>
+      <title>KSUG 20201110 답변</title>
+      <link>/post/spring/ksug/20201110_2/answer/</link>
+      <pubDate>Tue, 10 Nov 2020 20:41:55 +0900</pubDate>
+      
+      <guid>/post/spring/ksug/20201110_2/answer/</guid>
+      <description>자야하는 관계로 간단하게 작성.
+질문 질문자가 모르는 것 gradle의 task에 대한 이해.
+답변 안녕하세요! 젠킨스와 Git Gradle을 이용해 스프링프로젝트를 AWS에 배포하는 공부하면서 궁금증이 생겨서 질문드립니다.1. git에서 특정 브랜치에 푸시 -&amp;gt; git hook이 젠킨스에 걸려서 jenkins에서 파이프라인 실행 -&amp;gt; jenkins 안에서 gradle test를 실행 -&amp;gt; 테스트실패할 경우 CI가 실패했다는 알림을 슬랙으로 알림 이러한 과정을 생각하고 있는데, 마지막 gradle test를 실행한 후에 테스트 실패시 pipeline job들을 멈추려고 하는데 이게 가능한가요?2. gradle build를 실행할 경우 gradle build안에는 jar로 압축하는 task와 test를 실행하는 task가 따로 동작하게 되어서 테스트가 실패해도 jar가 생성되더라구요!</description>
+    </item>
+    
+    <item>
+      <title>KUSG 답변 20201110</title>
+      <link>/post/spring/ksug/20201110/answer/</link>
+      <pubDate>Tue, 10 Nov 2020 10:07:57 +0900</pubDate>
+      
+      <guid>/post/spring/ksug/20201110/answer/</guid>
+      <description>질문 답변  파이썬의 함수나 라이브러리를 활용하여 데이터 전처리를 쉽게할수 있는 것을 만들고 있습니다.
+ 네 파이썬 판다스 같은게 데이터 처리하기 참 좋긴하더군요.
+ 저는 react -&amp;gt; springboot -&amp;gt; flask 아키를 고민하고 있습니다.
+ 여기 문맥에서 굳이 react를 언급하지 않으셔도 될 것 같은데. 글을 통해 대중적이며 모던한 기술셋을 지향하신다는 것을 느낄수 있네요.
+ 여기서 java는 직접 db처리없이 오직 flask에서 처리하려고합니다.
+ 이런구조에서는 혹자는 이렇게 부르더라고요 기존에 자바를 백엔드라고 불렀던것을
+| front | backend |react ----- java ------ database | front | backend |react ----- java ------ flask ----- database제가 java로 servlet으로 프로그램을 만들더라도 view engine으로 view layer를 만들어서 저보고 프론트 개발한거라고하더군요</description>
+    </item>
+    
+    <item>
+      <title>Webflux NioEventLoop 살짝 살펴보기</title>
+      <link>/post/spring/webflux/eventloop/</link>
+      <pubDate>Sun, 08 Nov 2020 23:17:59 +0900</pubDate>
+      
+      <guid>/post/spring/webflux/eventloop/</guid>
+      <description>들어가기전 웹플럭스 이벤트루프 소스를 언제는 보겠다 생각했었는데. 어쩌다보니 이제 보게되었다. 뒤돌아서면 까먹으니 간단히 메모형태로 정리
+본론  io.netty.channel.nio.NioEventLoop
+ NioEventLoop는 독립된 Thread로 실행되므로 run메서드가 최초 동작. for(;;)에서 보면 알 수 있듯이 무한 loop를 돌리고 client 요청이 오면 저 selectCnt에 값이 1 증가함.
+요청이 들어오면 processSelectedKeysOptimized 메서드에서
+위의 netty가 만들어주는 selectedKeySet에서 값을 가져와서 처리
+unsafe.read() 이후 client 요청 데이터를 읽는 것으로 보임(TODO bytebuffer로 읽기는 하는데 어디에 저장하는지 살펴봐야함.)
+io.netty.handler.codec.ByteToMessageDecoder 에서 byte에서 http 전문(문자열)을 만들어냄.</description>
+    </item>
+    
+    <item>
+      <title>20201108 KSUG 질문 답변</title>
+      <link>/post/spring/webflux/ksug-question-20201108/</link>
+      <pubDate>Sun, 08 Nov 2020 22:34:22 +0900</pubDate>
+      
+      <guid>/post/spring/webflux/ksug-question-20201108/</guid>
+      <description>페이스북에서 KSUG 커뮤니티 글을 보다가
+위와 같은 질문글을 보았는데 댓글로 달기에는 내용이 너무 많아서 죽어있던 블로그를 심폐소생해보았다.
+ 10개의 요청이 있고 이요청들이 모두다 DB에서 데이터를 가져 오느라 IO 요청에 시간이 걸린다면. 이것둘은 모두 Mono로 우선 리턴이 되고. 스프링 어딘가에 맵같은곳에 쌓여 있나요?
+ 리액티브에 대한 이해가 필요한 부분입니다. 정답만 말씀드리면 db에서 데이터를 가져올때까지 다음 코드가 실행되지 않습니다. map같은데에 저장하지는 않고 thread가 block을 하고 있는 것과 비슷합니다. db에서 데이터를 다 가져오면 mono의 다음 동작이 실행됩니다.</description>
+    </item>
+    
+    <item>
+      <title>한컴오피스2020 설치후 ctrl &#43; space 누르면 &#39;심볼 입력&#39; 창이 뜨는 문제 해결 방법</title>
+      <link>/post/dev/hancom_input/</link>
+      <pubDate>Mon, 18 May 2020 15:56:56 +0900</pubDate>
+      
+      <guid>/post/dev/hancom_input/</guid>
+      <description>ctrl+space 입력시 아래의 이미지처럼 심볼 입력 창이 나오는 경우. 해결 방법  시작 &amp;gt; &amp;lsquo;고급 키보드 설정&amp;rsquo;  2.사용 가능한 경우 바탕화면 입력 도구 모음 사용을 선택하면 하단에 입력기 선택 화면이 나옴.
+입력기 선택 화면에서 Microsoft 입력기 선택  </description>
+    </item>
+    
+    <item>
+      <title>(리뷰) 현직 자바 개발자가 읽고 쓴 &#39;자바의 정석 기초편&#39; 리뷰</title>
+      <link>/post/review/book/jungsuk_of_java/post/</link>
+      <pubDate>Tue, 07 Jan 2020 15:48:13 +0900</pubDate>
+      
+      <guid>/post/review/book/jungsuk_of_java/post/</guid>
+      <description>서론 작성자 소개 자바 개발 외길 11년차로 과거 java 5부터 시작해서 servlet/jsp로 웹 프로그래밍을 하다가 spring framework를 주력으로 웹서비스를 만들고 있다. 해왔던 업무 대부분을 자바로 개발을 하였다. 2009년 국비지원 학원에서 자바의 정석을 첫 만났었고 10년이 지나 자바의 정석 기초편에 관심을 갖고 읽어보게 되었다.
+  책 겉모습     투명한 필름으로 밀봉되어 있다. 개인적으로는 이렇게 책 내용을 볼 수 없는 책은 서점에서 읽어 볼 수가 없어서 잘 손이 안가는 편인데 이번 java의 정석은 총 3권으로 구성되어있어서 포장을하게 된 것 같다.</description>
+    </item>
+    
+    <item>
+      <title>스프링 레퍼런스 문서 URL 모음</title>
+      <link>/post/spring/spring-docs/</link>
+      <pubDate>Fri, 11 Oct 2019 09:57:14 +0900</pubDate>
+      
+      <guid>/post/spring/spring-docs/</guid>
+      <description>spring-docuemtns  spring-framework spring-data-jdbc spring-data-jpa spring-data-mongodb spring-data-redis spring-data-batch spring-cloud spring-cloud commons spring-cloud config spring-cloud gateway spring-cloud circuit breaker spring-cloud open feign spring-cloud security  spring-documents webserver  spring springboot spring-data jdbc spring-data-mongodb spring-data-jpa spring-security spring-security oauth 2.0 spring-restdocs  즐겨찾기  springboot common application properties - 2.1.9 springboot common application properties springboot-starters  </description>
+    </item>
+    
+    <item>
+      <title>hugo로 블로그 만들고 utterances로 댓글추가 및 github로 호스팅하기 정리</title>
+      <link>/post/dev/hugo-blog/</link>
+      <pubDate>Wed, 25 Sep 2019 15:56:56 +0900</pubDate>
+      
+      <guid>/post/dev/hugo-blog/</guid>
+      <description>Hugo란 static page generator로 markdown 문법으로 컨텐츠를 작성하면 html 파일로 만들주고 이를 theme에서 정의된대로 컨텐츠가 조합되서 정적 사이트를 만들어주는 툴.
+설치 방법 mac Quick Start
+필자의 경우는 ubuntu 환경이라서 Install Hugo 페리지를 참조. (필자는 windows10이고 WSL환경에서 ubuntu로 환경. root로 작업함.)
+apt updateapt install hugoapt install asciidoctorSite(블로그) 생성 $ hugo new site blog $ cd blog $ ls archetypes config.toml content data layouts static themes 테마 선택 hugo themes 개인적으로는 심플하고 눈에 피로감을 덜주며 읽기 좋은 테마를 선택을 희망하여 hugo-dusk를 선택</description>
+    </item>
+    
+  </channel>
+</rss>
