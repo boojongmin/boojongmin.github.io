@@ -13,7 +13,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="/" />
-<meta property="og:updated_time" content="2020-11-15T17:42:02+09:00" />
+<meta property="og:updated_time" content="2020-11-23T09:19:54+09:00" />
 
 		<meta itemprop="name" content="기억 저장소">
 <meta itemprop="description" content="">
@@ -50,6 +50,18 @@ if (!doNotTrack) {
 	
 	<main class="main">
 			<div class="cards">
+					<div class="card card--2col">
+					<article class="entry card__box block">
+	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/dev/java/intellij/gradle_too_slow/">Intellij gradle 빌드가 너무 오래 걸릴때.(1분이상)</a></h1>
+	<div class="entry__content">문제상황 필자가 코딩테스트를 했었는데 빌드만 인텔리제이에서 1분이 넘게 걸리는 묘한 상태에 빠졌었다.(아래 이미지 참조)
+여태 이런적이 없었는데 가는 날이 장날이라고 꼭 바쁜 상황일때 이런 일을 겪는거 보면 난감하기만하다.
+당시에는 시간이 급해서 환경세팅을 다시할 자신이 없었기에 최대한 빌드를 적게하는 방향으로 진행을 했지만 (180분 코테에 10번만 빌드를 해도 10분이 훌쩍 지나가는데 최소 30번 이상을 했으니&hellip;. 계속 값을 확인해야했으므로 실행을하려면 빌드가 필수였다.)
+오늘 intellij를 키려고보니 예전 빌드가 잘 안되던게 생각이 나서 이 부분을 바로 잡으려고 세팅중에 나와 같은 문제를 겪을 사람들이 있을거라 생각이 들어 글로 정리를한다.</div>
+	<div class="entry__meta meta mt tar">
+	<time class="entry__meta-published meta-published" datetime="2020-11-23T09:19:54&#43;09:00">2020-11-23 09:19:54</time>
+	</div>
+</article>
+					</div>
 					<div class="card card--2col">
 					<article class="entry card__box block">
 	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/spring/jpa/20201115/sqler2jpa/">왜 Sqler는 JPA 쓸 때 다들 힘들어할까?</a></h1>
@@ -154,21 +166,13 @@ io.netty.handler.codec.ByteToMessageDecoder 에서 byte에서 http 전문(문자
 	</div>
 </article>
 					</div>
-					<div class="card card--2col">
-					<article class="entry card__box block">
-	<h1 class="entry__title title-excerpt"><a class="entry__title-link" href="/post/dev/hugo-blog/">hugo로 블로그 만들고 utterances로 댓글추가 및 github로 호스팅하기 정리</a></h1>
-	<div class="entry__content">Hugo란 static page generator로 markdown 문법으로 컨텐츠를 작성하면 html 파일로 만들주고 이를 theme에서 정의된대로 컨텐츠가 조합되서 정적 사이트를 만들어주는 툴.
-설치 방법 mac Quick Start
-필자의 경우는 ubuntu 환경이라서 Install Hugo 페리지를 참조. (필자는 windows10이고 WSL환경에서 ubuntu로 환경. root로 작업함.)
-apt updateapt install hugoapt install asciidoctorSite(블로그) 생성 $ hugo new site blog $ cd blog $ ls archetypes config.toml content data layouts static themes 테마 선택 hugo themes 개인적으로는 심플하고 눈에 피로감을 덜주며 읽기 좋은 테마를 선택을 희망하여 hugo-dusk를 선택</div>
-	<div class="entry__meta meta mt tar">
-	<time class="entry__meta-published meta-published" datetime="2019-09-25T15:56:56&#43;09:00">2019-09-25 15:56:56</time>
-	</div>
-</article>
-					</div>
 			</div>
 	</main>
 	
+<div class="pagination block">
+				<span class="pagination__item pagination__item--active" data-total="2">1</span>
+				<a class="pagination__item pagination__item--desktop" href="/page/2/">2</a>
+</div>
 
 	</div>
 	<footer class="footer">

@@ -6,7 +6,19 @@
     <description>Recent content on 기억 저장소</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Nov 2020 17:42:02 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Nov 2020 09:19:54 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intellij gradle 빌드가 너무 오래 걸릴때.(1분이상)</title>
+      <link>/post/dev/java/intellij/gradle_too_slow/</link>
+      <pubDate>Mon, 23 Nov 2020 09:19:54 +0900</pubDate>
+      
+      <guid>/post/dev/java/intellij/gradle_too_slow/</guid>
+      <description>문제상황 필자가 코딩테스트를 했었는데 빌드만 인텔리제이에서 1분이 넘게 걸리는 묘한 상태에 빠졌었다.(아래 이미지 참조)
+여태 이런적이 없었는데 가는 날이 장날이라고 꼭 바쁜 상황일때 이런 일을 겪는거 보면 난감하기만하다.
+당시에는 시간이 급해서 환경세팅을 다시할 자신이 없었기에 최대한 빌드를 적게하는 방향으로 진행을 했지만 (180분 코테에 10번만 빌드를 해도 10분이 훌쩍 지나가는데 최소 30번 이상을 했으니&amp;hellip;. 계속 값을 확인해야했으므로 실행을하려면 빌드가 필수였다.)
+오늘 intellij를 키려고보니 예전 빌드가 잘 안되던게 생각이 나서 이 부분을 바로 잡으려고 세팅중에 나와 같은 문제를 겪을 사람들이 있을거라 생각이 들어 글로 정리를한다.</description>
+    </item>
+    
     <item>
       <title>왜 Sqler는 JPA 쓸 때 다들 힘들어할까?</title>
       <link>/post/spring/jpa/20201115/sqler2jpa/</link>
