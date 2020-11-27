@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1b1b1b">
+	<title>DDD 질문에 대한 생각 정리 | 기억 저장소</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="DDD 질문에 대한 생각 정리" />
+<meta property="og:description" content="질문 질문자에게 전달해야겠다고 생각한 내용  일단 (계획없이) join 사용은 피하자. RDBMS만 영속(persistence)가 아니다. ORM은 객체가 persistence가 되는것이다. 객체지향 설계는 DDD와 맥락을 같이한다. DDD가 잘되면 MSA는 자연스러운 것.  질문에 대한 내 생각 정리 전회사에서 개발 좋아하는 성향의 사람들이 모여서 퇴사후에도 종종 수다를 떠는 (내가 애정하는) 카톡방에서 계신 프론트 개발자분께서 DDD란 주제로 질문을 해주셨다.(백엔드도 잘하심) 내 주위에 DDD 잘한다고 말하시는분 찾기 힘들고 나역시도 DDD에 전문가라고 말하고 다닐만큼 역량이 되지 않는지라 이 주제에 대해 글을 쓰는건 두렵지만 이렇게 글을 남기면 내가 잘 못 알았던 부분에 대한 피드백도 받을 수 있을거란 기대감에 지인께서 질문하신 DDD에 대한 내 생각을 풀어보겠다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/ddd/what-is-ddd/" />
+<meta property="article:published_time" content="2020-11-28T07:39:55+09:00" />
+<meta property="article:modified_time" content="2020-11-28T07:39:55+09:00" />
+
+		<meta itemprop="name" content="DDD 질문에 대한 생각 정리">
+<meta itemprop="description" content="질문 질문자에게 전달해야겠다고 생각한 내용  일단 (계획없이) join 사용은 피하자. RDBMS만 영속(persistence)가 아니다. ORM은 객체가 persistence가 되는것이다. 객체지향 설계는 DDD와 맥락을 같이한다. DDD가 잘되면 MSA는 자연스러운 것.  질문에 대한 내 생각 정리 전회사에서 개발 좋아하는 성향의 사람들이 모여서 퇴사후에도 종종 수다를 떠는 (내가 애정하는) 카톡방에서 계신 프론트 개발자분께서 DDD란 주제로 질문을 해주셨다.(백엔드도 잘하심) 내 주위에 DDD 잘한다고 말하시는분 찾기 힘들고 나역시도 DDD에 전문가라고 말하고 다닐만큼 역량이 되지 않는지라 이 주제에 대해 글을 쓰는건 두렵지만 이렇게 글을 남기면 내가 잘 못 알았던 부분에 대한 피드백도 받을 수 있을거란 기대감에 지인께서 질문하신 DDD에 대한 내 생각을 풀어보겠다.">
+<meta itemprop="datePublished" content="2020-11-28T07:39:55+09:00" />
+<meta itemprop="dateModified" content="2020-11-28T07:39:55+09:00" />
+<meta itemprop="wordCount" content="705">
+
+
+
+<meta itemprop="keywords" content="" />
+
+		<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DDD 질문에 대한 생각 정리"/>
+<meta name="twitter:description" content="질문 질문자에게 전달해야겠다고 생각한 내용  일단 (계획없이) join 사용은 피하자. RDBMS만 영속(persistence)가 아니다. ORM은 객체가 persistence가 되는것이다. 객체지향 설계는 DDD와 맥락을 같이한다. DDD가 잘되면 MSA는 자연스러운 것.  질문에 대한 내 생각 정리 전회사에서 개발 좋아하는 성향의 사람들이 모여서 퇴사후에도 종종 수다를 떠는 (내가 애정하는) 카톡방에서 계신 프론트 개발자분께서 DDD란 주제로 질문을 해주셨다.(백엔드도 잘하심) 내 주위에 DDD 잘한다고 말하시는분 찾기 힘들고 나역시도 DDD에 전문가라고 말하고 다닐만큼 역량이 되지 않는지라 이 주제에 대해 글을 쓰는건 두렵지만 이렇게 글을 남기면 내가 잘 못 알았던 부분에 대한 피드백도 받을 수 있을거란 기대감에 지인께서 질문하신 DDD에 대한 내 생각을 풀어보겠다."/>
+
+	<link rel="stylesheet" href="/css/bundle.css">
+	<link rel="stylesheet" href="/css/custom.css">
+	<link rel="icon" href="/icons/16.png" sizes="16x16" type="image/png">
+	<link rel="icon" href="/icons/32.png" sizes="32x32" type="image/png">
+	<link rel="manifest" href="/manifest.json">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-G3XWW8292Y', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body kind-page">
+	<header class="header">
+	<a class="logo" href="/">기억 저장소</a>
+	
+</header>
+	<div class="primary">
+	
+	<main class="main">
+		
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/">Binario</a>
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/post/">Posts</a>
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">DDD 질문에 대한 생각 정리</li>
+	</ol>
+</nav>
+		<div class="single block">
+			<article class="entry">
+	<div class="entry__meta meta mb">
+	<time class="entry__meta-published meta-published" datetime="2020-11-28T07:39:55&#43;09:00">2020-11-28 07:39:55</time>
+	</div>
+				<h1 class="entry__title">DDD 질문에 대한 생각 정리</h1>
+<details class="entry__toc toc" open>
+	<summary class="toc__title"></summary>
+	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#질문">질문</a></li>
+    <li><a href="#질문자에게-전달해야겠다고-생각한-내용">질문자에게 전달해야겠다고 생각한 내용</a></li>
+    <li><a href="#질문에-대한-내-생각-정리">질문에 대한 내 생각 정리</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#각주">각주</a></li>
+  </ul>
+</nav>
+</details>
+				<div class="entry__content"><h2 id="질문">질문</h2>
+<p><img src="../2020-11-28-07-40-49.png" alt=""></p>
+<h2 id="질문자에게-전달해야겠다고-생각한-내용">질문자에게 전달해야겠다고 생각한 내용</h2>
+<ul>
+<li>일단 (계획없이) join 사용은 피하자.</li>
+<li>RDBMS만 영속(persistence)가 아니다.</li>
+<li>ORM은 객체가 persistence가 되는것이다. 객체지향 설계는 DDD와 맥락을 같이한다.</li>
+<li>DDD가 잘되면 MSA는 자연스러운 것.</li>
+</ul>
+<h2 id="질문에-대한-내-생각-정리">질문에 대한 내 생각 정리</h2>
+<p>전회사에서 개발 좋아하는 성향의 사람들이 모여서 퇴사후에도 종종 수다를 떠는 (내가 애정하는) 카톡방에서 계신 프론트 개발자분께서 DDD란 주제로 질문을 해주셨다.(백엔드도 잘하심) 내 주위에 DDD 잘한다고 말하시는분 찾기 힘들고 나역시도 DDD에 전문가라고 말하고 다닐만큼 역량이 되지 않는지라 이 주제에 대해 글을 쓰는건 두렵지만 이렇게 글을 남기면 내가 잘 못 알았던 부분에 대한 피드백도 받을 수 있을거란 기대감에 지인께서 질문하신 DDD에 대한 내 생각을 풀어보겠다.</p>
+<h4 id="1-ddd는-왜-필요할까">1. DDD는 왜 필요할까?</h4>
+<p>먼저 DDD를 공부할때 나오는 바운디드컨텍스트, 애그리것루트, 전략적 설계, 전술적 설계 등등 용어가 난무하는데 이런 용에에 집착하다보면 본질을 놓칠수 있다고 생각이 들어 내가 생각하는 DDD의 본질은 무엇일까에 대해 생각을 해본다.</p>
+<p>먼저 DDD는 설계에 대한 여러 테크닉들이 들어가 있다.</p>
+<p>그럼 설계는 왜 하는 것일까?
+우리는 이미 알고 있다. 잘못된 설계는 나중에 개발 및 유지보수도 어려워지고 여러 블라블라 이야기를 합니다.</p>
+<p>그럼 설계는 무엇을 의미할까요?</p>
+<p>좁게는 DB 설계를 의미할 것이고
+넓게는 우리가 코딩하기 위해 고민하는 모든 것이 설계가 될 수 있겠죠.</p>
+<p>일단 좁게 우리가 흔히 SI에서 설계라고하는 이야기로 한정지어
+&lsquo;요구사항 분석 -&gt; 설계&rsquo;후 산출물인 ERD를 가지고 설계를 한다고 생각해보시죠.</p>
+<p>(erd 샘플 - 인터넷에서 복잡해보이는거 가져옴.)</p>
+<p><img src="../2020-11-28-07-56-22.png" alt=""></p>
+<p><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>과거 SI 초반 설계 단계에서 상당히 복잡한 ERD를  DBA나 리더급이 작성을하고 이것을 기반으로 코딩을 하곤했습니다. 
+인간은 완벽할 수 없기에 개발하면서 저 ERD도 추가/수정/삭제가 계속 이루어지게됩니다.</p>
+<p>자 여기서부터 불행은 시작된다고 봅니다.</p>
+<p>일단 설계단계에서 나오는 ERD는 <code>toooooo complex</code>합니다. 왜냐하면 대부분 <code>이건 이래서~ 필요할거니 넣어야지 하면서 추가된 테이블들이 하나둘 쌓여가며 오버엔지니어링 덩어리</code>였었습니다.</p>
+<p>저의 소프트웨어 설계의 기본 골자는 TDD와 맥락을 같이합니다.</p>
+<p><code>실패하는 테스트 -&gt; 성공하는 테스트</code>로 가는 것 처럼  불필요한 코드는 일단 짜지 않고 동작하는 최소의 코드에서 점차 레고블럭을 쌓듯 코드는 늘어나야한다고 생각합니다. 그리고 코딩하는 행위 자체가 설계가 되기에 처음에 설계한것은 유연하게 계속 바뀔 수 있어야하고요&hellip;(그에 반해 ERD는 신성시해서 그걸 벗어나서 사고하는 것이 금기시되면서 개발자의 자유도를 떨어트린다고 생각합니다. 물론 ERD가 무조건 비난받을 대상은 아니고요 훌륭한 도구죠. 일부분은 단점이 있다는 시각에서 글을 작성하고 있습니다.)</p>
+<p><code>too complex</code> 다음으로 ERD의 문제점은 <code>RDBMS적으로 설계가 된 것을 OOP로 변환</code>해야한다는 것입니다. 이건 제가 생각하기엔 두가지 문제점을 야기합니다.</p>
+<ol>
+<li>코드가 전반적으로 OOP가 아닌 절차적으로 짜여진다.</li>
+<li>everything is rdbms.</li>
+</ol>
+<p>(2가지로 나눠서 이야기를했지만 한번에 묶어서 전개를하겠습니다. 그냥 위의 생각이 아래 글에 녹아져있습니다. 있&hellip;있을거예요.)
+패러다임이 전환됨에 따라 패러다임 전환 비용이 발생합니다. 그러기에 우리는 mybatis나 jdbctemplate 같은 sql mapper를 사용해서 전환 비용을 줄이려고 노력을 하죠.</p>
+<p>헌데 이러한 관점에서 지속적으로 코딩의 양이 늘어나면 발생하는 건 이전의 <code>too complex</code>와 연결되는 것이긴한데. sql mapper를 통해 db 데이터를 객체에 매핑하던 패러다임에 익숙한 개발자는 데이터의 연관 관계만을 살펴보고 <code>join</code>으로 해결할 수 있으면 join으로 테이블들을 묶고 새로운 Model class(디비에서 가져온 데이터를 맵핑하는 객체)를 만들어서 코딩을하게 되죠.</p>
+<p>왜냐?</p>
+<p>이렇게 사고하는게 자연스러운 흐름이기 때문이죠.</p>
+<p>그렇게에 어느샌가 Model 이름이 붙은 클래스들이 하나둘씩 늘어나기 시작하고 개발자들은 얘는 어디서 쓰기위해 만든건지 짐작하기 어려워지죠&hellip;</p>
+<p>그래서</p>
+<p><a href="https://boojongmin.github.io/post/spring/ksug/20201120/answer/">KSUG 20201120 답변 - (xxxParam, xxxVO, xxxModel, xxxDTO, xxxEntity 같은 개념으로 여러개 만들어서 사용하는 것이 조금 비효율적이라는 생각이 들어 글을 올립니다)</a></p>
+<p>(이런 질문글들을 종종 보게 되고 저도 글을 쓸게 되었네요&hellip;)</p>
+<p>참고로 javascript, python 같은 동적타입들은 자바처럼 sql mapping할 클래스를 만들지 않아도 되서 편하기에 이런 고민을 안할거라고 판단이 됩니다. 허나 역시 rdmbs적인 사고에서 벗어나지 못하고 코딩을 할 수 밖에 없다고 생각합니다. 결국 자바처럼 model을 만들 고통이 줄어들어서 그렇지 문제 해결을 위해 join&hellip;join&hellip;join&hellip;한 걸 가져다 쓰죠. 아마 오히려 자바보다 더 join위주의 문제 해결이 더 심할 것으로 판단합니다.(자바쪽은 귀찮아서 기존에 있는거 갖다 쓰려고는 하는데 동적타입은 그냥 select 쿼리 날리고 그냥 쓰기만하면 되기에&hellip;)</p>
+<p>아무튼 다시 <code>RDBMS적으로 설계가 된 것을 OOP로 변환</code>이라는 주제로 넘어가서 절차적으로 코딩하다보니 모델링은 죄다 join으로 풀게되고 이러면서 <code>OOP적인 설계 또는 모델링</code>에 실패를하게 된다고 생각합니다. 그리고 연결되는게 rdbms로 못하는게 없다는 생각과 연결되게 되는 것 같은데. (틀린말은 아니지만 이 글은 패러다임에 대한 주제를 다루고 있어서 조금 그 주제에 대한 갑론을박은 넘어가도록하겠습니다&hellip;)</p>
+<p>그럼 join으로 풀게되면 문제점이 무엇일까요?</p>
+<p>질문을 주신 분도 front 개발자시니 서로 공감가는 이미지를 찾아보았습니다.</p>
+<p><img src="../2020-11-28-08-31-58.png" alt=""></p>
+<p><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>위의 이미지처럼 component의 상태 설계시 상태를 global state에 다 때려박으면 생기는 문제점은 어느 컴포넌트에 영향을 줄지 모르기 때문에 
+코드의 유지보수를 위해서는 global state를 최소화하는게 중요합니다.(처음엔 좋다고 redux나 vuex같은 global state를 썼다가 낭패를 보기 쉽죠&hellip;)</p>
+<p>자 그럼 global state가 front만에서만 있을까요?</p>
+<p>저 <code>프론트의 global state가 백엔드에서는 DB</code>입니다.</p>
+<p>DB의 테이블의 필드의 이름이 변경된다던가 삭제후 어떤 api가 영향을 받게 되는지 모든것을 캐치할 수 있는 개발자는 별로 없을 것입니다. (그러기에 수많은 테스트를하고 삽질을하고 장애나면 대응을하고&hellip;)</p>
+<p>자&hellip; 이런것에 대안은 DDD입니다.</p>
+<p>(서론이이 길었긴한데 애들이 깨서 아침 준비를 해야해서&hellip; 그러면서 이야기거리를 좀더 정리를하고 다시 돌아 오겠습니다.)</p>
+<h4 id="heading"></h4>
+<h2 id="각주">각주</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://dataedo.com/blog/you-dont-need-an-er-diagram-to-understand-your-database">https://dataedo.com/blog/you-dont-need-an-er-diagram-to-understand-your-database</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://chatoo2412.github.io/javascript/react/react-context-as-a-state-management-tool/">https://chatoo2412.github.io/javascript/react/react-context-as-a-state-management-tool/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div>
+				
+				<footer class="entry__footer">
+					
+					
+<div class="entry__share share">
+	<a class="share__link btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fddd%2fwhat-is-ddd%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="share__link btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=%2fpost%2fddd%2fwhat-is-ddd%2f&amp;text=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M437 152a72 72 0 0 1-40 12 72 72 0 0 0 32-40 72 72 0 0 1-45 17 72 72 0 0 0-122 65 200 200 0 0 1-145-74 72 72 0 0 0 22 94 72 72 0 0 1-32-7 72 72 0 0 0 56 69 72 72 0 0 1-32 1 72 72 0 0 0 67 50 200 200 0 0 1-105 29 200 200 0 0 0 309-179 200 200 0 0 0 35-37"/></svg>
+	</a>
+	<a class="share__link btn" title=" Reddit" href="https://www.reddit.com/submit?url=%2fpost%2fddd%2fwhat-is-ddd%2f&amp;title=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="share__link btn" title=" Telegram" href="https://t.me/share/url?url=%2fpost%2fddd%2fwhat-is-ddd%2f&amp;title=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M199 404c-11 0-10-4-13-14l-32-105 245-144"/><path d="M199 404c7 0 11-4 16-8l45-43-56-34"/><path d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"/></svg>
+	</a>
+	<a class="share__link btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=%2fpost%2fddd%2fwhat-is-ddd%2f&title=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" width="32" height="32" viewBox="0 0 512 512"><circle cx="142" cy="138" r="37"/><path stroke-width="66" d="M244 194v198M142 194v198"/><path d="M276 282c0-20 13-40 36-40 24 0 33 18 33 45v105h66V279c0-61-32-89-76-89-34 0-51 19-59 32"/></svg>
+	</a>
+	<a class="share__link btn" title=" VK" href="https://vk.com/share.php?url=%2fpost%2fddd%2fwhat-is-ddd%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' VK', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="VK" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M274 363c5-1 14-3 14-15 0 0-1-30 13-34s32 29 51 42c14 9 25 8 25 8l51-1s26-2 14-23c-1-2-9-15-39-42-31-30-26-25 11-76 23-31 33-50 30-57-4-7-20-6-20-6h-57c-6 0-9 1-12 6 0 0-9 25-21 45-25 43-35 45-40 42-9-5-7-24-7-37 0-45 7-61-13-65-13-2-59-4-73 3-7 4-11 11-8 12 3 0 12 1 17 7 8 13 9 75-2 81-15 11-53-62-62-86-2-6-5-7-12-9H79c-6 0-15 1-11 13 27 56 83 193 184 192z"/></svg>
+	</a>
+	<a class="share__link btn" title=" Pocket" href="https://getpocket.com/edit?url=%2fpost%2fddd%2fwhat-is-ddd%2f&amp;title=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=480,height=320,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pocket" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M388.8 88.9H123.2A47.4 47.4 0 0 0 76 136.5v131.9c0 2.4.2 4.8.5 7.2a101.8 101.8 0 0 0-.5 10.6c0 75.6 80.6 137 180 137s180-61.4 180-137c0-3.6-.2-7.1-.5-10.6.3-2.4.5-4.8.5-7.2v-132A47.4 47.4 0 0 0 388.8 89zm-22.4 132.6l-93 93c-4.7 4.6-11 7-17.1 7a23.8 23.8 0 0 1-17.7-7l-93-93a24 24 0 0 1 33.8-33.8l76.6 76.5 76.6-76.5a24 24 0 0 1 33.8 33.8z"/></svg>
+	</a>
+	<a class="share__link btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=%2fpost%2fddd%2fwhat-is-ddd%2f&description=DDD%20%ec%a7%88%eb%ac%b8%ec%97%90%20%eb%8c%80%ed%95%9c%20%ec%83%9d%ea%b0%81%20%ec%a0%95%eb%a6%ac" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+				</footer>
+				
+			</article>
+		</div>
+	</main>
+	
+<div class="authorbox block">
+	<div class="author">
+		<figure class="author__avatar">
+			<img class="author__img" alt="boojongmin avatar" src="/img/avatar.jpg" height="90" width="90">
+		</figure>
+		<div class="author__body">
+			<div class="author__name">
+				boojongmin
+			</div>
+		</div>
+	</div>
+</div>
+	
+
+
+
+	
+<section class="comments block">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "boojongmin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+	</div>
+	<footer class="footer">
+<div class="footer__social social">
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="mailto:boojongmin@gmail.com">
+			<svg class="social__icon" aria-label="Email" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M299 268l124 106c-4 4-10 7-17 7H106c-7 0-13-3-17-7l124-106 43 38 43-38zm-43 13L89 138c4-4 10-7 17-7h300c7 0 13 3 17 7L256 281zm54-23l121-105v208L310 258zM81 153l121 105L81 361V153z"/></svg>
+		</a>
+		<a class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/boojongmin">
+			<svg class="social__icon" aria-label="Github" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M335 499c14 0 12 17 12 17H165s-2-17 12-17c13 0 16-6 16-12l-1-50c-71 16-86-28-86-28-12-30-28-37-28-37-24-16 1-16 1-16 26 2 40 26 40 26 22 39 59 28 74 22 2-17 9-28 16-35-57-6-116-28-116-126 0-28 10-51 26-69-3-6-11-32 3-67 0 0 21-7 70 26 42-12 86-12 128 0 49-33 70-26 70-26 14 35 6 61 3 67 16 18 26 41 26 69 0 98-60 120-117 126 10 8 18 24 18 48l-1 70c0 6 3 12 16 12z"/></svg>
+		</a>
+</div>
+	<div class="footer__copyright">© 2020 기억 저장소. <span class="footer__copyright-credits"></span></div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+
+<script src="/js/custom.js"></script>
+</body>
+</html>

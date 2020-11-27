@@ -6,7 +6,16 @@
     <description>Recent content on 기억 저장소</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Nov 2020 09:19:54 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Nov 2020 07:39:55 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDD 질문에 대한 생각 정리</title>
+      <link>/post/ddd/what-is-ddd/</link>
+      <pubDate>Sat, 28 Nov 2020 07:39:55 +0900</pubDate>
+      
+      <guid>/post/ddd/what-is-ddd/</guid>
+      <description>질문 질문자에게 전달해야겠다고 생각한 내용  일단 (계획없이) join 사용은 피하자. RDBMS만 영속(persistence)가 아니다. ORM은 객체가 persistence가 되는것이다. 객체지향 설계는 DDD와 맥락을 같이한다. DDD가 잘되면 MSA는 자연스러운 것.  질문에 대한 내 생각 정리 전회사에서 개발 좋아하는 성향의 사람들이 모여서 퇴사후에도 종종 수다를 떠는 (내가 애정하는) 카톡방에서 계신 프론트 개발자분께서 DDD란 주제로 질문을 해주셨다.(백엔드도 잘하심) 내 주위에 DDD 잘한다고 말하시는분 찾기 힘들고 나역시도 DDD에 전문가라고 말하고 다닐만큼 역량이 되지 않는지라 이 주제에 대해 글을 쓰는건 두렵지만 이렇게 글을 남기면 내가 잘 못 알았던 부분에 대한 피드백도 받을 수 있을거란 기대감에 지인께서 질문하신 DDD에 대한 내 생각을 풀어보겠다.</description>
+    </item>
+    
     <item>
       <title>Intellij gradle 빌드가 너무 오래 걸릴때.(1분이상)</title>
       <link>/post/dev/java/intellij/gradle_too_slow/</link>
